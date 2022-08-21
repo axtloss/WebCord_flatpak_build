@@ -38,8 +38,7 @@ jobs:
       #- name: detection version for publishing
       #  run: echo "tag=$(bash get_latest_version_string.sh)" >> $GITHUB_ENV
       - name: Build on arm64
-      - uses: actions/checkout@v2.1.0
-      - uses: uraimo/run-on-arch-action@v2
+        uses: uraimo/run-on-arch-action@v2
         with:
           arch: arm64
           uses: ubuntu20.04
