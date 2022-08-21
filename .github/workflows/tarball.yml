@@ -46,8 +46,8 @@ jobs:
 
           # Set an output parameter `uname` for use in subsequent steps
           run: |
-            npm install npm -g
             apt-get install npm flatpak-builder
+            npm install npm -g
             bash tarball/tarball_build_aarch64.sh
             mv WebCord_${{ env.tag }}_x86_64.tar.gz
       - name: Release file
