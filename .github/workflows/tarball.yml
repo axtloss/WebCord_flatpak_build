@@ -34,7 +34,7 @@ jobs:
       - name: run a tarball build
         run: |
           bash tarball/tarball_build.sh
-          mv WebCord_${{ env.tag }}_x86_64.tar.gz
+          mv WebCord_*.tar.gz WebCord_${{ env.tag }}_x86_64.tar.gz
       #- name: detection version for publishing
       #  run: echo "tag=$(bash get_latest_version_string.sh)" >> $GITHUB_ENV
       - name: Build on arm64
