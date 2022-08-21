@@ -29,9 +29,6 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: 16
-      - name: Install dependencies
-        run: npm install
-
       - name: Generate artifacts (${{ matrix.arch }})
         run: bash tarball/tarball_build.sh ${{ matrix.arch }}
       - name: Release file
