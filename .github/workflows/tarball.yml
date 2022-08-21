@@ -41,7 +41,7 @@ jobs:
         uses: uraimo/run-on-arch-action@v2
         with:
           arch: arm64
-          uses: ubuntu20.04
+          distro: ubuntu20.04
           #githubToken: ${{ github.token }}
 
           # Set an output parameter `uname` for use in subsequent steps
