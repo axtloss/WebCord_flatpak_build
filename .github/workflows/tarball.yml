@@ -48,7 +48,7 @@ jobs:
           run: |
             npm install npm -g
             apt-get install npm flatpak-builder
-            bash tarball/tarball_build.sh
+            bash tarball/tarball_build_aarch64.sh
             mv WebCord_${{ env.tag }}_x86_64.tar.gz
       - name: Release file
         # You may pin to the exact commit or the version.
