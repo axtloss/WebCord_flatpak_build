@@ -43,7 +43,7 @@ jobs:
         with:
           arch: arm64
           uses: ubuntu20.04
-          githubToken: ${{ github.token }}
+          #githubToken: ${{ github.token }}
 
           # Set an output parameter `uname` for use in subsequent steps
           run: |
