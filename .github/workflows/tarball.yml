@@ -20,31 +20,25 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [macos-latest, windows-latest, ubuntu-latest]
         arch: [x64, arm64]
+        include:
+          - os: ubuntu-latest
+            arch: armv7l
+          - os: windows-latest
+            arch: ia32
     name: ${{ matrix.os }}-${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - name: update npm
-        run: sudo npm install npm -g
-      - name: install dependencies
-        run: bash deps.sh
-      - name: run a tarball build
-        run: |
-          bash tarball/tarball_build.sh
-          mv WebCord_*.tar.gz WebCord_${{ env.tag }}_${{ matrix.arch }}.tar.gz
-      #- name: detection version for publishing
-      #  run: echo "tag=$(bash get_latest_version_string.sh)" >> $GITHUB_ENV
-      - name: Upload 
-        uses: ncipollo/release-action@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
         with:
-           artifacts: "WebCord_*.tar.gz"
-           token: ${{ secrets.GITHUB_TOKEN }}
-           tag: ${{ env.gat }} 
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate artifacts (${{ matrix.arch }})
+        run: bash tarball/tarball_build.sh ${{ matrix.arch }}
       - name: Release file
         # You may pin to the exact commit or the version.
         # uses: djnicholson/release-action@e9a535b3eced09c460e07a84118fb74ae9b53236
