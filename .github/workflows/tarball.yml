@@ -20,13 +20,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         arch: [x64, arm64]
-        include:
-          - os: ubuntu-latest
-            arch: armv7l
-          - os: windows-latest
-            arch: ia32
     name: ${{ matrix.os }}-${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     steps:
