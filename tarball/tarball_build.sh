@@ -12,7 +12,7 @@ TAG_NAME=$(bash ./get_latest_version_string.sh)
 wget "https://github.com/SpacingBat3/WebCord/archive/refs/tags/$TAG_NAME.tar.gz"
 
 
-TARBALL_NAME="WebCord_$TAG_NAME.tar.gz"
+TARBALL_NAME="WebCord_$TAG_NAME-$1.tar.gz"
 
 tar -xvzf v*
 
